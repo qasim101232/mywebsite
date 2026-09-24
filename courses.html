@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Courses — Moodle Connected</title>
+    <link rel="stylesheet" href="courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-graduation-cap"></i> My Courses</h1>
+            <p>Saare courses Moodle se live loaded</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Status -->
+        <div id="status" class="status loading">
+            <i class="fas fa-spinner fa-spin"></i> Courses loading...
+        </div>
+
+        <!-- Stats -->
+        <div id="stats" class="stats" style="display:none;"></div>
+
+        <!-- Courses Grid -->
+        <div id="coursesGrid" class="courses-grid"></div>
+
+    </main>
+
+    <!-- Course Detail Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Course</h3>
+                <button class="close-btn" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <p style="text-align:center; padding: 30px; color:#888;">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="courses.js"></script>
+</body>
+</html>

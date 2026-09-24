@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant — Course Q&A</title>
+    <link rel="stylesheet" href="ai-assistant.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <h1>📚 Course AI Assistant</h1>
+        <p>Neeche 🤖 icon par click karein aur course ke baare mein kuch bhi poochein</p>
+
+        <div class="course-selector">
+            <label>Select Course:</label>
+            <select id="courseId">
+                <option value="2">Artificial Intelligence (ID: 2)</option>
+                <option value="3">Data Structure & Algorithm (ID: 3)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Chat Bubble -->
+    <button class="chat-bubble" id="chatBubble">
+        <i class="fas fa-robot"></i>
+        <span class="notification-dot"></span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <i class="fas fa-robot"></i>
+                <div>
+                    <h3>AI Assistant</h3>
+                    <span class="status-text">
+                        <span class="status-dot"></span> Online
+                    </span>
+                </div>
+            </div>
+            <button id="closeChat"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="avatar"><i class="fas fa-robot"></i></div>
+                <div class="bubble">
+                    Assalam-o-Alaikum! 👋<br><br>
+                    Main aapka AI course assistant hoon. 
+                    Is course ke baare mein kuch bhi poochein — 
+                    main aapko course content ke basis par jawab dunga.
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="userInput" 
+                   placeholder="Apna sawal likhein..." 
+                   autocomplete="off">
+            <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="ai-assistant.js"></script>
+</body>
+</html>

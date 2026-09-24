@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPro - Learn Without Limits</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i> Edu<span>Pro</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="ai-assistant.html">Assistant</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#instructors">Instructors</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn-login">Login</a>
+                <a href="#" class="btn-signup">Sign Up</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="badge">🚀 #1 Online Learning Platform</span>
+                <h1>Learn New Skills <br>Anytime, <span>Anywhere</span></h1>
+                <p>Join millions of learners worldwide. Access 5000+ courses taught by industry experts and advance your career today.</p>
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn-primary">Explore Courses <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn-secondary"><i class="fas fa-play"></i> Watch Demo</a>
+                </div>
+                <div class="hero-stats">
+                    <div><h3>50K+</h3><p>Students</p></div>
+                    <div><h3>500+</h3><p>Courses</p></div>
+                    <div><h3>120+</h3><p>Instructors</p></div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" alt="Students Learning">
+                <div class="floating-card card-1">
+                    <i class="fas fa-certificate"></i>
+                    <div><h4>Certified</h4><p>Courses</p></div>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-user-graduate"></i>
+                    <div><h4>10K+</h4><p>Graduates</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Expert-Led Courses</h3>
+                    <p>Learn from industry professionals with real-world experience.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Flexible Learning</h3>
+                    <p>Study at your own pace, anytime and from any device.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Verified Certificates</h3>
+                    <p>Get recognized certificates after completing courses.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Our support team is always here to help you succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Popular Courses</span>
+                <h2>Explore Our Top <span>Courses</span></h2>
+                <p>Choose from a wide range of courses designed to boost your career</p>
+            </div>
+            <div class="course-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="marketing">Marketing</button>
+                <button class="filter-btn" data-filter="data">Data Science</button>
+            </div>
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Courses will be injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600" alt="About">
+                <div class="experience-badge">
+                    <h3>10+</h3>
+                    <p>Years of Experience</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <span class="subtitle">About Us</span>
+                <h2>We Provide The Best <span>Online Education</span> For You</h2>
+                <p>EduPro is a leading online education platform dedicated to making quality education accessible to everyone. Our mission is to help learners achieve their goals through expert-led courses and interactive learning experiences.</p>
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> Industry-Recognized Certifications</li>
+                    <li><i class="fas fa-check-circle"></i> Hands-On Projects & Assignments</li>
+                    <li><i class="fas fa-check-circle"></i> Lifetime Access to Course Materials</li>
+                    <li><i class="fas fa-check-circle"></i> Community Support & Networking</li>
+                </ul>
+                <a href="#" class="btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructors -->
+    <section class="instructors" id="instructors">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Our Team</span>
+                <h2>Meet Our Expert <span>Instructors</span></h2>
+            </div>
+            <div class="instructors-grid">
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Instructor">
+                    <h3>Sarah Johnson</h3>
+                    <p>Web Development Expert</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300" alt="Instructor">
+                    <h3>Michael Chen</h3>
+                    <p>Data Science Lead</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300" alt="Instructor">
+                    <h3>Emily Davis</h3>
+                    <p>UI/UX Designer</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300" alt="Instructor">
+                    <h3>David Miller</h3>
+                    <p>Marketing Strategist</p>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container cta-container">
+            <div>
+                <h2>Start Learning Today!</h2>
+                <p>Get unlimited access to 5000+ courses with a free trial.</p>
+            </div>
+            <a href="#" class="btn-primary">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Get In Touch</span>
+                <h2>Contact <span>Us</span></h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div><h4>Address</h4><p>123 Education Street, Lahore, Pakistan</p></div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div><h4>Phone</h4><p>+92 300 1234567</p></div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><h4>Email</h4><p>info@edupro.com</p></div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo"><i class="fas fa-graduation-cap"></i> Edu<span>Pro</span></a>
+                <p>Empowering learners worldwide with quality education.</p>
+                <div class="social-footer">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">Design</a></li>
+                    <li><a href="#">Marketing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Newsletter</h4>
+                <p>Subscribe to get updates on new courses.</p>
+                <form class="newsletter">
+                    <input type="email" placeholder="Your Email">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 EduPro. All Rights Reserved. Made with ❤️</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
