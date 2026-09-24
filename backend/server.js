@@ -116,7 +116,7 @@ YOUR INSTRUCTIONS:
 Now answer the student's question.`;
 
         // 3. Gemini API
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`;
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`;
 
         const geminiResponse = await axios.post(geminiUrl, {
             contents: [
