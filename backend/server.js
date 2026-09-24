@@ -13,12 +13,21 @@ app.use(express.json());
 const GEMINI_KEY = process.env.GEMINI_API_KEY;
 const MOODLE_URL = process.env.MOODLE_URL;
 const MOODLE_TOKEN = process.env.MOODLE_TOKEN;
+const PORT = process.env.PORT || 5000;
 
 // =========================================================
 // COURSE CONTENT CACHE (5 minute)
 // =========================================================
 const courseCache = {};
 const CACHE_DURATION = 5 * 60 * 1000;
+
+// =========================================================
+// HTML STRIP HELPER
+// =========================================================
+function stripHtml(html) {
+    if (!html) return '';
+    return html.replace(/<[^>]*>/g, '').trim();
+}
 
 // =========================================================
 // MOODLE SE COURSE CONTENT LAO
@@ -67,11 +76,6 @@ async function getCourseContent(courseId) {
     return text;
 }
 
-function stripHtml(html) {
-    if (!html) return '';
-    return html.replace(/<[^>]*>/g, '').trim();
-}
-
 // =========================================================
 // AI CHAT ENDPOINT
 // =========================================================
@@ -84,6 +88,13 @@ app.post('/api/ai/chat', async (req, res) => {
         }
         if (!courseId) {
             return res.status(400).json({ success: false, error: 'Course ID required' });
+        }
+
+        if (!GEMINI_KEY) {
+            return res.status(500).json({
+                success: false,
+                error: 'GEMINI_API_KEY .env mein set nahi hai'
+            });
         }
 
         console.log(`\n💬 User: "${message}" (Course: ${courseId})`);
@@ -115,7 +126,7 @@ YOUR INSTRUCTIONS:
 
 Now answer the student's question.`;
 
-        // 3. Gemini API
+        // 3. Gemini API — UPDATED MODEL
         const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`;
 
         const geminiResponse = await axios.post(geminiUrl, {
@@ -139,9 +150,16 @@ Now answer the student's question.`;
 
     } catch (error) {
         console.error('❌ Error:', error.response?.data || error.message);
+
+        // Better error message
+        let errorMsg = error.message;
+        if (error.response?.data?.error?.message) {
+            errorMsg = error.response.data.error.message;
+        }
+
         res.status(500).json({
             success: false,
-            error: error.response?.data?.error?.message || error.message
+            error: errorMsg
         });
     }
 });
@@ -153,15 +171,17 @@ app.get('/api/health', (req, res) => {
     res.json({
         status: 'ok',
         moodle: MOODLE_URL,
-        gemini: GEMINI_KEY ? 'configured' : 'missing'
+        gemini: GEMINI_KEY ? 'configured' : 'missing',
+        model: 'gemini-2.5-flash'
     });
 });
 
 // =========================================================
 // START
 // =========================================================
-app.listen(process.env.PORT, () => {
-    console.log(`\n🚀 Backend chal raha hai: http://localhost:${process.env.PORT}`);
+app.listen(PORT, () => {
+    console.log(`\n🚀 Backend chal raha hai: http://localhost:${PORT}`);
     console.log(`📡 Moodle: ${MOODLE_URL}`);
-    console.log(`🤖 Gemini: ${GEMINI_KEY ? '✅ Ready' : '❌ API key missing'}\n`);
+    console.log(`🤖 Gemini: ${GEMINI_KEY ? '✅ Ready' : '❌ API key missing'}`);
+    console.log(`🧠 Model: gemini-2.5-flash\n`);
 });
