@@ -77,7 +77,7 @@ async function getCourseContent(courseId) {
 }
 
 // =========================================================
-// AI CHAT ENDPOINT
+// AI CHAT ENDPOINT (NAYA INTERACTIONS API)
 // =========================================================
 app.post('/api/ai/chat', async (req, res) => {
     try {
@@ -89,7 +89,6 @@ app.post('/api/ai/chat', async (req, res) => {
         if (!courseId) {
             return res.status(400).json({ success: false, error: 'Course ID required' });
         }
-
         if (!GEMINI_KEY) {
             return res.status(500).json({
                 success: false,
@@ -126,23 +125,34 @@ YOUR INSTRUCTIONS:
 
 Now answer the student's question.`;
 
-        // 3. Gemini API — UPDATED MODEL
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_KEY}`;
+        // 3. NAYA GEMINI INTERACTIONS API
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/interactions`;
 
-        const geminiResponse = await axios.post(geminiUrl, {
-            contents: [
-                {
-                    role: 'user',
-                    parts: [{ text: `${systemPrompt}\n\nSTUDENT'S QUESTION: ${message}` }]
+        const geminiResponse = await axios.post(
+            geminiUrl,
+            {
+                model: 'gemini-3.6-flash',
+                input: `${systemPrompt}\n\nSTUDENT'S QUESTION: ${message}`
+            },
+            {
+                headers: {
+                    'x-goog-api-key': GEMINI_KEY,
+                    'Content-Type': 'application/json'
                 }
-            ],
-            generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 800
             }
-        });
+        );
 
-        const reply = geminiResponse.data.candidates[0].content.parts[0].text;
+        // 4. Reply extract karo naye format se
+        const reply = geminiResponse.data.steps
+            .filter(step => step.type === 'model_output')
+            .flatMap(step => step.content)
+            .filter(c => c.type === 'text')
+            .map(c => c.text)
+            .join('');
+
+        if (!reply) {
+            throw new Error('AI ne koi text jawab nahi diya');
+        }
 
         console.log(`🤖 AI reply: "${reply.substring(0, 80)}..."`);
 
@@ -151,7 +161,6 @@ Now answer the student's question.`;
     } catch (error) {
         console.error('❌ Error:', error.response?.data || error.message);
 
-        // Better error message
         let errorMsg = error.message;
         if (error.response?.data?.error?.message) {
             errorMsg = error.response.data.error.message;
@@ -172,7 +181,8 @@ app.get('/api/health', (req, res) => {
         status: 'ok',
         moodle: MOODLE_URL,
         gemini: GEMINI_KEY ? 'configured' : 'missing',
-        model: 'gemini-2.5-flash'
+        model: 'gemini-3.6-flash',
+        api: 'interactions'
     });
 });
 
@@ -183,5 +193,6 @@ app.listen(PORT, () => {
     console.log(`\n🚀 Backend chal raha hai: http://localhost:${PORT}`);
     console.log(`📡 Moodle: ${MOODLE_URL}`);
     console.log(`🤖 Gemini: ${GEMINI_KEY ? '✅ Ready' : '❌ API key missing'}`);
-    console.log(`🧠 Model: gemini-2.5-flash\n`);
+    console.log(`🧠 Model: gemini-3.6-flash`);
+    console.log(`🔌 API: Interactions API\n`);
 });
